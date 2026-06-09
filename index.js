@@ -22,10 +22,10 @@ app.get('/init', async (req, res) => {
         name TEXT
       )
     `)
-    res.send('Table users créée (si elle n’existait pas déjà)')
-        await pool.query(`
+    await pool.query(`
       INSERT INTO users (name) VALUES ('Alice'), ('Bob'), ('Charlie')
     `)
+    res.send("Table users créée et données insérées")
   } catch (err) {
     res.status(500).send(err.message)
   }
